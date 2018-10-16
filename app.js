@@ -7,13 +7,19 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     document.querySelector(".dice").src = 'dice-' + dice + '.png';
     if (dice != 1) {
         currentScore += dice;
+        document.querySelector(".dice").style.display = 'block';
         document.getElementById('current-' + activePlayer).textContent = currentScore;
     }
     if (dice === 1) {
+
+        document.getElementById('current-' + activePlayer).textContent = currentScore = 0;
         currentScore = 0;
-        document.getElementById('current-' + activePlayer).textContent = currentScore;
-        activePlayer == 0 ? activePlayer = 1 : activePlayer = 0;
-        document.querySelector(".dice").style.display = 'none';
+        if (activePlayer === 0) {
+            activePlayer = 1;
+        } else {
+            activePlayer = 0;
+        }
+
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active');
     }
