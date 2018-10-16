@@ -27,10 +27,19 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 document.querySelector('.btn-hold').addEventListener('click', function () {
     netScore[activePlayer] += currentScore;
     currentScore = 0;
-    document.getElementById('score-' + activePlayer).textContent = netScore[activePlayer];
-    document.getElementById('current-' + activePlayer).textContent = currentScore;
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
+    if (netScore[activePlayer] < 20) {
+        document.getElementById('score-' + activePlayer).textContent = netScore[activePlayer];
+        document.getElementById('current-' + activePlayer).textContent = currentScore;
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+    } else {
+        document.getElementById('score-' + activePlayer).textContent = netScore[activePlayer];
+        document.getElementById('current-' + activePlayer).textContent = currentScore;
+        document.getElementById("name-" + activePlayer).style.color = "#eb4d4d";
+        document.getElementById("name-" + activePlayer).style.fontWeight = 'bold';
+        document.getElementById("name-" + activePlayer).textContent = "WINNER!";
+    }
+
     if (activePlayer === 0) {
         activePlayer = 1;
     } else {
