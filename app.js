@@ -10,7 +10,14 @@ var maxValue = prompt("Enter game win value");
 
 document.getElementById('name-0').textContent = playerOne;
 document.getElementById('name-1').textContent = playerTwo;
-document.querySelector(".dice").src = 'dice-0.gif';
+// document.querySelector(".dice").src = 'dice-0.gif';
+var count=0;
+    setInterval(() => {
+        count++;
+        if (count>6) count=1;
+        document.querySelector('.dice').src = `dice-${count}.png`;
+    }, 1000);
+
 document.querySelector('.btn-roll').addEventListener('click', function () {
     dice = Math.ceil(Math.random() * 6); //dice roll
     document.querySelector(".dice").src = 'dice-' + dice + '.png';
